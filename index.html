@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nina Handayani | CRM & Lifecycle Systems Builder</title>
+<meta name="description" content="I build the systems that make lead lifecycle and customer lifecycle measurable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B1E33;
+    --ink-2:#0F2740;
+    --paper:#E8EEF3;
+    --paper-dim:#B9C8D6;
+    --accent:#F2A65A;
+    --line:#4A7A96;
+    --line-dim:#28425A;
+    --muted:#7C93A6;
+    --max:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.6;
+    font-size:17px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif; font-weight:600; margin:0; color:#fff;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
+  a{color:var(--accent);}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:14px;
+    display:block;
+  }
+  /* background blueprint grid */
+  .grid-bg{
+    position:fixed; inset:0; z-index:-1;
+    background-image:
+      linear-gradient(var(--line-dim) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-dim) 1px, transparent 1px);
+    background-size:48px 48px;
+    opacity:0.18;
+  }
+
+  /* HERO */
+  .hero{padding:120px 0 90px; border-bottom:1px dashed var(--line-dim);}
+  .hero h1{font-size:clamp(34px,5vw,54px); line-height:1.12; max-width:780px;}
+  .hero .tagline{color:var(--paper-dim); font-size:20px; margin-top:22px; max-width:600px;}
+  .hero-cta{margin-top:36px; display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:14px;
+    padding:12px 22px;
+    border:1px solid var(--line);
+    border-radius:2px;
+    color:var(--paper);
+    text-decoration:none;
+    transition:all .15s ease;
+  }
+  .btn:hover, .btn:focus-visible{background:var(--line-dim); border-color:var(--accent);}
+  .btn.primary{background:var(--accent); border-color:var(--accent); color:var(--ink);}
+  .btn.primary:hover{opacity:0.88; background:var(--accent);}
+
+  /* STAT BAR */
+  .stats{padding:52px 0; border-bottom:1px dashed var(--line-dim);}
+  .stat-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:24px;}
+  .stat-num{font-family:'IBM Plex Mono',monospace; font-size:clamp(22px,3vw,32px); color:var(--accent); font-weight:600;}
+  .stat-label{font-size:13px; color:var(--muted); margin-top:6px; line-height:1.4;}
+  @media (max-width:800px){ .stat-grid{grid-template-columns:repeat(2,1fr);} }
+
+  /* POSITIONING */
+  .positioning{padding:70px 0; border-bottom:1px dashed var(--line-dim);}
+  .positioning p{max-width:680px; font-size:18px; color:var(--paper-dim); margin:0 0 18px;}
+  .positioning p:last-child{margin-bottom:0;}
+  .positioning strong{color:#fff; font-weight:600;}
+
+  /* SYSTEMS */
+  .system{padding:90px 0; border-bottom:1px dashed var(--line-dim);}
+  .system-head{display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;}
+  .system-num{font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:15px;}
+  .system h2{font-size:clamp(26px,3.4vw,36px); max-width:700px;}
+  .system-sub{color:var(--muted); font-size:15px; font-style:italic; margin:14px 0 40px; max-width:640px;}
+  .diagram{margin:36px 0 44px; overflow-x:auto;}
+  .diagram svg{display:block; min-width:600px;}
+  .system-block{margin-bottom:26px; max-width:700px;}
+  .system-block .label{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--line); display:block; margin-bottom:8px;
+  }
+  .system-block p{margin:0; color:var(--paper-dim); font-size:16px;}
+  .system-block.result .label{color:var(--accent);}
+  .system-block.result p{color:#fff; font-weight:500;}
+
+  /* HIRE ME / PROOF */
+  .two-col{padding:80px 0; border-bottom:1px dashed var(--line-dim);}
+  .two-col .wrap{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  @media (max-width:760px){ .two-col .wrap{grid-template-columns:1fr; gap:48px;} }
+  .col h3{font-size:20px; margin-bottom:22px;}
+  .item{padding:16px 0; border-top:1px solid var(--line-dim);}
+  .item:first-of-type{border-top:none; padding-top:0;}
+  .item .label{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--accent); display:block; margin-bottom:6px;}
+  .item p{margin:0; color:var(--paper-dim); font-size:15px;}
+
+  /* WHAT'S NEXT / CONTACT */
+  .footer-section{padding:90px 0 60px;}
+  .footer-section h2{font-size:clamp(26px,3.4vw,34px); max-width:620px; margin-bottom:20px;}
+  .footer-section p{color:var(--paper-dim); font-size:17px; max-width:600px;}
+  .contact-row{margin-top:40px; display:flex; gap:28px; flex-wrap:wrap; font-family:'IBM Plex Mono',monospace; font-size:14px;}
+  .contact-row a{text-decoration:none; border-bottom:1px solid var(--line);}
+  .contact-row a:hover{border-color:var(--accent);}
+  .foot-meta{margin-top:70px; padding-top:24px; border-top:1px dashed var(--line-dim); color:var(--muted); font-size:13px; font-family:'IBM Plex Mono',monospace;}
+
+  .reveal{opacity:1;}
+  .reveal.pre-reveal{opacity:0; transform:translateY(16px);}
+  .reveal.is-visible{opacity:1; transform:none; transition:opacity .6s ease, transform .6s ease;}
+</style>
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Nina Handayani</span>
+    <h1>CRM &amp; Lifecycle Systems Builder</h1>
+    <p class="tagline">Campaigns end. I build the thing that's still working after they do.</p>
+    <div class="hero-cta">
+      <a class="btn primary" href="#systems">View the systems</a>
+      <a class="btn" href="#contact">Resume &amp; contact</a>
+    </div>
+  </div>
+</header>
+
+<section class="stats reveal">
+  <div class="wrap stat-grid">
+    <div><div class="stat-num">42%</div><div class="stat-label">Australia revenue, first-touch attributed to email</div></div>
+    <div><div class="stat-num">64→91%</div><div class="stat-label">MQL-to-SQL acceptance after lead scoring &amp; routing</div></div>
+    <div><div class="stat-num">5x</div><div class="stat-label">Closed-won growth from qualified lead prioritization</div></div>
+    <div><div class="stat-num">66%</div><div class="stat-label">Of email-attributed opportunities from a win-back program that didn't exist before</div></div>
+    <div><div class="stat-num">0→1</div><div class="stat-label">CRM, lifecycle & marketing infrastructure built from scratch</div></div>
+  </div>
+</section>
+
+<section class="positioning reveal">
+  <div class="wrap">
+    <span class="eyebrow">Positioning</span>
+    <p>I'm strongest when a company needs the underlying logic decided, not just campaigns run on top of a system someone else already built. Segmentation rules, scoring models, what data flows where and why, and why someone should be hearing from us at all at that moment. That thinking doesn't change with the tool.</p>
+    <p>I was Mitrais's first marketing hire, when the company was six years old. There was no CRM, no playbook, no lifecycle function. <strong>I built it.</strong></p>
+  </div>
+</section>
+
+<section id="systems"></section>
+
+<!-- SYSTEM 01 -->
+<article class="system reveal">
+  <div class="wrap">
+    <div class="system-head">
+      <span class="system-num">SYSTEM 01</span>
+      <h2>Building Australia's First Lifecycle Engine</h2>
+    </div>
+    <p class="system-sub">Can you build something from nothing, and know when to rebuild it once it stops working?</p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 1000 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flow: no system, direct mail and personal network, to email blast built on one database with uniform offers reaching 42% revenue, to a stall, to lifecycle rebuild with redefined ICPs and BDM collaboration, to win-back">
+        <line x1="60" y1="55" x2="940" y2="55" stroke="#4A7A96" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <g font-family="IBM Plex Mono" font-size="12" fill="#B9C8D6">
+          <circle cx="60" cy="55" r="6" fill="#0B1E33" stroke="#4A7A96" stroke-width="1.5"/>
+          <text x="60" y="85" text-anchor="middle">No system</text>
+          <text x="60" y="100" text-anchor="middle" font-size="10" fill="#7C93A6">Direct mail, network</text>
+
+          <circle cx="330" cy="55" r="6" fill="#F2A65A" stroke="#F2A65A" stroke-width="1.5"/>
+          <text x="330" y="85" text-anchor="middle" fill="#F2A65A">Email blast: 42%</text>
+          <text x="330" y="100" text-anchor="middle" font-size="10" fill="#7C93A6">One database, one offer</text>
+
+          <circle cx="530" cy="55" r="6" fill="#B9C8D6" stroke="#B9C8D6" stroke-width="1.5"/>
+          <text x="530" y="85" text-anchor="middle">Stall</text>
+
+          <circle cx="740" cy="55" r="6" fill="#0B1E33" stroke="#4A7A96" stroke-width="1.5"/>
+          <text x="740" y="85" text-anchor="middle">Lifecycle rebuild</text>
+          <text x="740" y="100" text-anchor="middle" font-size="10" fill="#7C93A6">Redefined ICPs, BDM-led messaging</text>
+
+          <circle cx="940" cy="55" r="6" fill="#F2A65A" stroke="#F2A65A" stroke-width="1.5"/>
+          <text x="940" y="85" text-anchor="middle" fill="#F2A65A">Win-back: 66%</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="system-block">
+      <span class="label">What I built</span>
+      <p>No CRM, no lead history, no attribution. Just personal relationships and direct mail, postcards and airmail. I built a database of the Australian target market and ran an email blast system, everyone received the same offer. Simple on purpose, no segmentation, no scoring, just consistent communication where none existed before.</p>
+    </div>
+    <div class="system-block">
+      <span class="label">Messaging thinking</span>
+      <p>I didn't write the emails alone. I worked with the Australian BDMs, they knew the market and the language better than I did. My job was the strategy underneath: which lifecycle stage needed education versus a commercial push, when to lead with a customer's actual problem instead of what we sold, and what signaled someone was ready for a sales conversation. BDMs wrote the words. I decided what the words needed to do.</p>
+    </div>
+    <div class="system-block">
+      <span class="label">What broke</span>
+      <p>Revenue growth stalled. Everyone was getting the same message, regardless of industry, job title, persona, or where they actually were in the buying process.</p>
+    </div>
+    <div class="system-block">
+      <span class="label">What I changed</span>
+      <p>Rebuilt around lifecycle, redefined our ICPs, and moved messaging into real collaboration with BDMs instead of one blanket offer. Set up a dedicated campaign for dormant clients, win-back, which had never existed before. Customers who'd gone quiet weren't treated like new leads, we acknowledged the relationship first and re-established relevance before making another offer.</p>
+    </div>
+    <div class="system-block result">
+      <span class="label">Result</span>
+      <p>42% of Australia revenue, first-touch attributed to the original blast system. Win-back alone generated 66% of email-attributed opportunities.</p>
+    </div>
+    <div class="system-block">
+      <span class="label">What I learned</span>
+      <p>The system that got us to 42% wasn't the system that got us past it. Recognizing that mattered as much as building the original system.</p>
+    </div>
+  </div>
+</article>
+
+<!-- SYSTEM 02 -->
+<article class="system reveal">
+  <div class="wrap">
+    <div class="system-head">
+      <span class="system-num">SYSTEM 02</span>
+      <h2>Teaching Sales What Matters First</h2>
+    </div>
+    <p class="system-sub">Do you solve problems with logic first, or wait for the tool to solve it for you?</p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 900 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flow: manual ICP filter proven by hand, then RocketReach enrichment removes the research hours">
+        <line x1="80" y1="50" x2="890" y2="50" stroke="#4A7A96" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <g font-family="IBM Plex Mono" font-size="12" fill="#B9C8D6">
+          <circle cx="80" cy="50" r="6" fill="#0B1E33" stroke="#4A7A96" stroke-width="1.5"/>
+          <text x="80" y="80" text-anchor="middle">ICP defined</text>
+          <circle cx="290" cy="50" r="6" fill="#0B1E33" stroke="#4A7A96" stroke-width="1.5"/>
+          <text x="290" y="80" text-anchor="middle">Manual filter</text>
+          <circle cx="500" cy="50" r="6" fill="#F2A65A" stroke="#F2A65A" stroke-width="1.5"/>
+          <text x="500" y="80" text-anchor="middle" fill="#F2A65A">Proven by hand</text>
+          <circle cx="710" cy="50" r="6" fill="#0B1E33" stroke="#4A7A96" stroke-width="1.5"/>
+          <text x="710" y="80" text-anchor="middle">Years later</text>
+          <circle cx="890" cy="50" r="6" fill="#F2A65A" stroke="#F2A65A" stroke-width="1.5"/>
+          <text x="890" y="80" text-anchor="middle" fill="#F2A65A">RocketReach</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="system-block">
+      <span class="label">What I built</span>
+      <p>Inbound leads had no prioritization. BDMs spent time chasing volume, not fit. I defined a manual filtering system, no software, ICP fit and actual service offerings, non-trivial for a company that could offer many different technical skills to a client.</p>
+    </div>
+    <div class="system-block">
+      <span class="label">Messaging thinking</span>
+      <p>The score wasn't just "does this account match on paper." Someone who fit the ICP but only downloaded generic content wasn't scored the same as someone repeatedly engaging with content about a specific service. Fit told us who to consider. Behavior told us who was actually close.</p>
+    </div>
+    <div class="system-block result">
+      <span class="label">Result</span>
+      <p>Qualified lead volume up 48%. MQL-to-SQL acceptance from 64% to 91%. Closed-won grew 5x.</p>
+    </div>
+    <div class="system-block">
+      <span class="label">What changed, years later</span>
+      <p>Same manual ICP logic, now running through RocketReach enrichment. Automation didn't improve the logic, the logic was already proven by hand. It removed the research hours behind it, faster handoff, faster follow-up.</p>
+    </div>
+    <div class="system-block">
+      <span class="label">What I learned</span>
+      <p>The logic came first, proven by hand. Automation followed once the volume earned it.</p>
+    </div>
+  </div>
+</article>
+
+<!-- SYSTEM 03 -->
+<article class="system reveal">
+  <div class="wrap">
+    <div class="system-head">
+      <span class="system-num">SYSTEM 03 · CURRENT BUILD</span>
+      <h2>Building in Public</h2>
+    </div>
+    <p class="system-sub">Can you do this today, with the current AI-native stack? This one's live and unfinished, not a closed case study.</p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 900 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flow: Clay sources and enriches, Dynamics scores, then routes to Sales or Instantly nurture">
+        <line x1="70" y1="50" x2="500" y2="50" stroke="#4A7A96" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <line x1="500" y1="50" x2="830" y2="20" stroke="#4A7A96" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <line x1="500" y1="50" x2="830" y2="80" stroke="#4A7A96" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <g font-family="IBM Plex Mono" font-size="12" fill="#B9C8D6">
+          <circle cx="70" cy="50" r="6" fill="#0B1E33" stroke="#4A7A96" stroke-width="1.5"/>
+          <text x="70" y="80" text-anchor="middle">Clay</text>
+          <circle cx="290" cy="50" r="6" fill="#0B1E33" stroke="#4A7A96" stroke-width="1.5"/>
+          <text x="290" y="80" text-anchor="middle">Enrich</text>
+          <circle cx="500" cy="50" r="6" fill="#F2A65A" stroke="#F2A65A" stroke-width="1.5"/>
+          <text x="500" y="34" text-anchor="middle" fill="#F2A65A">Dynamics scores</text>
+          <circle cx="830" cy="20" r="6" fill="#0B1E33" stroke="#4A7A96" stroke-width="1.5"/>
+          <text x="830" y="12" text-anchor="middle">Sales</text>
+          <circle cx="830" cy="80" r="6" fill="#0B1E33" stroke="#4A7A96" stroke-width="1.5"/>
+          <text x="830" y="98" text-anchor="middle">Instantly nurture</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="system-block">
+      <span class="label">What I'm building</span>
+      <p>Most CDPs are built for one buyer making one decision. B2B is a buying group, and the CDPs built for that are priced for companies much bigger than this one. So: Clay sources and enriches accounts against a defined ICP. Dynamics 365 stays the source of truth and calculates the score, ICP fit, external signals, first-party engagement. Above threshold, Sales gets it, and it has to be timely. Below threshold, it goes into nurture in Instantly.ai.</p>
+    </div>
+    <div class="system-block">
+      <span class="label">Status</span>
+      <p>Live, ongoing. I'm documenting it in public as it's built, including what's broken. <a href="https://www.linkedin.com/in/nina-handayani/" target="_blank" rel="noopener">Follow the series on LinkedIn →</a></p>
+    </div>
+    <div class="system-block">
+      <span class="label">What I've learned so far</span>
+      <p>Identity resolution is the real hard part in B2B. Not the tools.</p>
+    </div>
+    <div class="system-block">
+      <span class="label">One thing retired</span>
+      <p>RocketReach used to run as its own enrichment step, back when the manual ICP filter first got automated. Clay's enrichment sources from RocketReach along with other providers, so once Clay was live, the standalone RocketReach step no longer had a reason to exist on its own.</p>
+    </div>
+  </div>
+</article>
+
+<section class="two-col reveal">
+  <div class="wrap">
+    <div class="col">
+      <h3>Hire me for</h3>
+      <div class="item"><span class="label">Primary: CRM &amp; Lifecycle Architecture</span><p>Systems 01 &amp; 02. Building the scoring, segmentation, and journey logic from zero. This is the work I've proven, repeatedly, across 20 years.</p></div>
+      <div class="item"><span class="label">Also strong in: Founding Marketer / 0-to-1</span><p>The full Mitrais tenure, no playbook to inherit, none of it optional.</p></div>
+      <div class="item"><span class="label">Also strong in: GTM Systems Building (AI / Clay)</span><p>System 03, live and ongoing. Same systems thinking, applied to today's AI-native stack.</p></div>
+    </div>
+    <div class="col">
+      <h3>Proof of work</h3>
+      <div class="item"><span class="label">Mining newsletter re-engagement</span><p>Set a 90-day sunset policy to remove inactive contacts, paired with a re-engagement campaign to win them back before they were cut. Open rate 14% to 35%. CTR 4% to 12%.</p></div>
+      <div class="item"><span class="label">Dynamics 365 + Antsomi CDP integration</span><p>Removed manual export steps. Campaign launch time cut 30%. Reporting moved from monthly to real-time.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="footer-section reveal" id="contact">
+  <div class="wrap">
+    <span class="eyebrow">What's next</span>
+    <h2>Best fit: lifecycle needs an owner, a system, or a rebuild.</h2>
+    <p>Especially early-stage teams hiring their first CRM/lifecycle operator, or companies whose growth has outpaced their existing infrastructure. Indonesia-based, GMT+8, full APAC and AU coverage. Comfortable working async with US and EU teams.</p>
+    <p style="margin-top:28px;"><a class="btn primary" href="mailto:nina.wibowo@gmail.com">Hiring for this kind of problem? Email Nina →</a></p>
+    <div class="contact-row" style="margin-top:22px;">
+      <a href="https://www.linkedin.com/in/nina-handayani/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="resume.pdf" target="_blank" rel="noopener">Resume (PDF) ↓</a>
+    </div>
+    <div class="foot-meta">© 2026 Nina Handayani. Built with Claude Code, hosted on GitHub Pages.</div>
+  </div>
+</section>
+
+<script>
+(function(){
+  // Progressive enhancement: content is fully visible by default (.reveal{opacity:1}).
+  // Only add the fade-in-on-scroll behavior if the browser supports it and the
+  // visitor hasn't asked for reduced motion.
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var els = document.querySelectorAll('.reveal');
+  els.forEach(function(el){ el.classList.add('pre-reveal'); });
+
+  var io = new IntersectionObserver(function(entries, obs){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting){
+        entry.target.classList.remove('pre-reveal');
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
